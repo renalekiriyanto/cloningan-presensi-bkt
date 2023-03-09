@@ -1,0 +1,38 @@
+import {AUTH_ERROR, LOGIN_FAILED, LOGIN_SUCCESS, USER_LOADED} from "./types";
+import axios from "axios";
+import setAuthToken from "../utils/setAuthToken";
+import {list} from "./checkin";
+
+export const login = (formData) => async dispatch => {
+    try{
+        const res = await axios.post('http://devpresensi.bukittinggikota.go.id/api/login', formData);
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+        })
+        dispatch(loadUser())
+    } catch (e){
+        dispatch({
+            type: LOGIN_FAILED
+        })
+    }
+}
+
+export const loadUser = () => async dispatch => {
+    if (localStorage.token){
+        setAuthToken(localStorage.token)
+    }
+
+    try {
+        const res = await axios.get('http://devpresensi.bukittinggikota.go.id/api/user');
+        dispatch({
+            type: USER_LOADED,
+            payload: res.data
+        })
+        dispatch(list())
+    }catch (err){
+        dispatch({
+            type: AUTH_ERROR
+        })
+    }
+}

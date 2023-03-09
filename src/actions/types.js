@@ -1,0 +1,9 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAILED = 'LOGIN_FAILED'
+export const USER_LOADED = 'USER_LOADED'
+export const AUTH_ERROR = 'AUTH_ERROR'
+//Checkin
+export const CHECKIN_MASUK = 'CHECKIN_MASUK';
+export const CHECKIN_PULANG = 'CHECKIN_PULANG';
+export const CHECKIN_FAILED = 'CHECKIN_FAILED';
+export const CHECKIN_TODAY = 'CHECKIN_TODAY';
