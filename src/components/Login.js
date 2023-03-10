@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {login} from "../actions/auth";
 import PropTypes from "prop-types";
 import setAuthToken from "../utils/setAuthToken";
-import {Navigate, useNavigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
+
+if (localStorage.token) {
+    setAuthToken(localStorage.token)
+}
 
 const Login = ({login, isAuthenticated}) => {
     const [formData, setFormData] = useState({
@@ -12,11 +15,9 @@ const Login = ({login, isAuthenticated}) => {
         password: ''
     })
 
-    const navigate = useNavigate()
-
-   if (isAuthenticated){
-       return <Navigate to="/" />
-   }
+    if (localStorage.token) {
+        return <Navigate to="/"/>
+    }
 
     const handleChange = e => setFormData({...formData, [e.target.name]: e.target.value})
 
@@ -32,13 +33,17 @@ const Login = ({login, isAuthenticated}) => {
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="username" className="block mb-1 font-bold">Username</label>
-                        <input type="text" id="username" name="userinfo_id" className="w-full p-2 border rounded-lg" onChange={handleChange} />
+                        <input type="text" id="username" name="userinfo_id" className="w-full p-2 border rounded-lg"
+                               onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor="password" className="block mb-1 font-bold">Password</label>
-                        <input type="password" id="password" name="password" className="w-full p-2 border rounded-lg" onChange={handleChange} />
+                        <input type="password" id="password" name="password" className="w-full p-2 border rounded-lg"
+                               onChange={handleChange}/>
                     </div>
-                    <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">Login</button>
+                    <button type="submit"
+                            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">Login
+                    </button>
                 </form>
             </div>
         </div>
