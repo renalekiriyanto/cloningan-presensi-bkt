@@ -7,7 +7,7 @@ export const list = () => async dispatch => {
         setAuthToken(localStorage.token)
     }
     try{
-        const res = await axios.get('https://myapplaporankeeja.my.id/api/absen/masuk')
+        const res = await axios.get('https://myapplaporankeeja.my.id/api/absen')
         dispatch({
             type: CHECKIN_TODAY,
             payload: res.data
