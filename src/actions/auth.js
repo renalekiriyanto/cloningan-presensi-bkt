@@ -6,9 +6,9 @@ import {list} from "./checkin";
 export const login = (formData) => async dispatch => {
     try{
         const res = await axios.post('https://myapplaporankeeja.my.id/api/login', formData,{
-            headers:{
-                'Content-Security-Policy': 'upgrade-insecure-requests'
-            }
+            // headers:{
+            //     'Content-Security-Policy': 'upgrade-insecure-requests'
+            // }
         });
         dispatch({
             type: LOGIN_SUCCESS,

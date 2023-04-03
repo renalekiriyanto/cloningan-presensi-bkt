@@ -25,11 +25,7 @@ const App = () => {
             <Router>
                 <Fragment>
                     <div className="w-full h-screen">
-                        {
-                            localStorage.token ? (
-                                <Navbar />
-                            ) : null
-                        }
+                        <Navbar />
                         <Routes exact path="/">
                             <Route exact path="/" element={<PrivateRoute component={Home}/>}/>
                             <Route exact path="/absen" element={<PrivateRoute component={AbsenMenu}/>}/>

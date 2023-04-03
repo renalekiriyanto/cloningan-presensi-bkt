@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {login} from "../actions/auth";
 import PropTypes from "prop-types";
 import setAuthToken from "../utils/setAuthToken";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token)
@@ -17,7 +17,7 @@ const Login = ({login, isAuthenticated}) => {
     })
 
     if (localStorage.token) {
-        return <Navigate to="/"/>
+        navigate('/', {replace: true});
     }
 
     const handleChange = e => setFormData({...formData, [e.target.name]: e.target.value})
@@ -25,7 +25,7 @@ const Login = ({login, isAuthenticated}) => {
     const handleSubmit = e => {
         e.preventDefault()
         login(formData)
-        navigate('/absen', {replace: true});
+        navigate('/', {replace: true});
     }
 
     return (
