@@ -3,13 +3,14 @@ import {connect} from "react-redux";
 import {login} from "../actions/auth";
 import PropTypes from "prop-types";
 import setAuthToken from "../utils/setAuthToken";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token)
 }
 
 const Login = ({login, isAuthenticated}) => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         userinfo_id: '',
         password: ''
@@ -24,6 +25,7 @@ const Login = ({login, isAuthenticated}) => {
     const handleSubmit = e => {
         e.preventDefault()
         login(formData)
+        navigate('/absen', {replace: true});
     }
 
     return (
