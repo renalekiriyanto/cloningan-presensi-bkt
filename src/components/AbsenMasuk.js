@@ -23,7 +23,7 @@ const AbsenMasuk = ({userinfo_id}) => {
         data.append('type', 1);
         data.append('user_id', userinfo_id);
         data.append('photo', file)
-        const res = await axios.post('http://devpresensi.bukittinggikota.go.id/api/checkin', data, {
+        const res = await axios.post('https://myapplaporankeeja.my.id/api/absen/masuk', data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

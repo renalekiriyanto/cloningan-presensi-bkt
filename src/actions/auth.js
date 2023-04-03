@@ -5,7 +5,7 @@ import {list} from "./checkin";
 
 export const login = (formData) => async dispatch => {
     try{
-        const res = await axios.post('http://devpresensi.bukittinggikota.go.id/api/login', formData,{
+        const res = await axios.post('https://myapplaporankeeja.my.id/api/login', formData,{
             headers:{
                 'Content-Security-Policy': 'upgrade-insecure-requests'
             }
@@ -28,7 +28,7 @@ export const loadUser = () => async dispatch => {
     }
 
     try {
-        const res = await axios.get('http://devpresensi.bukittinggikota.go.id/api/user',{
+        const res = await axios.get('https://myapplaporankeeja.my.id/api/user',{
             headers:{
                 'Content-Security-Policy': 'upgrade-insecure-requests'
             }
